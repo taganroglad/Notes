@@ -1,6 +1,12 @@
-class Notes:
-    def __init__(self):
-        self.notes = {}
+import uuid
+from datetime import datetime
+class Note:
+    def __init__(self, title, description):
+        self.id = str(uuid.uuid4())
+        self.title = title
+        self.description = description
+        self.timestamp = datetime.now()
+
 
     def add_note(self, name_of_note, description):
         self.notes[name_of_note] = description
@@ -22,7 +28,7 @@ class Notes:
     def find_note(self,name_of_note):
         if name_of_note in self.notes:
             return f"Заметка,{name_of_note}, описание:{self.notes[name_of_note]}"
-        else: print(f"заметка{name_of_note} не найдена")
+        else: print(f"заметка {name_of_note}    не найдена")
 
     def display_notes(self):
         for name_of_note, description in self.notes.items():
